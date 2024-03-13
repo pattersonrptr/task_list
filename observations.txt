@@ -1,0 +1,8 @@
+
+É preciso instalar 
+sudo apt-get install python3-dev default-libmysqlclient-dev
+
+Afim de instalar 
+pip install mysqlclient
+
+

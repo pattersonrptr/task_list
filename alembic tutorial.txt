@@ -1,0 +1,40 @@
+
+1) ------------------------------------------------
+
+Inicializar o alembic
+
+$ alembic init alembic
+
+2) ------------------------------------------------
+
+Configurar a string de conexão com o banco no alembic.ini
+
+Troque essa linha:
+sqlalchemy.url = driver://user:pass@localhost/dbname
+
+Por essa:
+sqlalchemy.url = mysql://root:password@localhost:3306/todo_list_db
+
+3) ------------------------------------------------
+
+Alembic complements SQLAlchemy very well as Alembic can evaluate SQLAlchemy schema and generate database migrations automatically.
+
+To map Alembic with the declarative base we defined, we need to edit the file alembic/env.py and set target_metadata like this:
+
+target_metadata = Base.metadata
+
+4) ------------------------------------------------
+
+Here is how we configure Alembic to use the variables we set in the .env file and used in configs/config.py. We set those in alembic/env.py:
+
+from alembic import context
+from configs import config as config_app
+
+# this is the Alembic Config object, which provides
+# access to the values within the .ini file in use.
+config = context.config
+config.set_main_operation('sqlalchemy.url', config_app.DB_URI)
+
+5) ------------------------------------------------
+
+To Alembic autogenerate the database migrations, we need to import our db model in alembic/env.py:
