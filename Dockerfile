@@ -9,5 +9,5 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD python run.py
-# CMD python3 -m http.server 5000
+# CMD python run.py
+CMD python3 -m http.server 5000
