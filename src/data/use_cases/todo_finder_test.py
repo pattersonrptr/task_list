@@ -2,7 +2,7 @@ from src.infra.db.tests.todo_repository import ToDoRepositorySpy
 from .todo_finder import ToDoFinder
 
 def test_find():
-    title = 'title'
+    title = 'Title'
 
     repo = ToDoRepositorySpy()
     todo_finder = ToDoFinder(repo)

@@ -17,7 +17,7 @@ class ToDoFinder(ToDoFinderInterface):
 
     @classmethod
     def __validate_name(cls, title: str) -> None:
-        if not title.isalpha():
+        if not title.istitle():
             raise HttpBadRequestError('Título invalido para a busca')
 
         if len(title) > 18:
