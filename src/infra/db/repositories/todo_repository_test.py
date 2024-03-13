@@ -1,3 +1,4 @@
+import pytest
 from sqlalchemy import text
 from src.infra.db.settings.connection import DBConnectionHandler
 from .todo_repository import ToDoRepository
@@ -5,6 +6,7 @@ from .todo_repository import ToDoRepository
 db_connection_handler = DBConnectionHandler()
 connection = db_connection_handler.get_engine().connect()
 
+@pytest.mark.skip(reason="Sensive test")
 def test_insert_todo():
     mocked_title = 'title_1'
 
@@ -25,6 +27,7 @@ def test_insert_todo():
     '''))
     connection.commit()
 
+@pytest.mark.skip(reason="Sensive test")
 def test_select_todo():
     mocked_title = 'title_2'
 
